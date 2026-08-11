@@ -1,11 +1,18 @@
 # file = open("filename.txt", "r")
 # lines = file.readlines()
-txtFiles = {"article1.txt", "article2.txt", "article3.txt", "article4.txt"}
-lines =words = chars = spaces = 0
-while True:
-    usrFile = input("File name: ")
-    if usrFile in txtFiles:
-        print("Yay")
+txtFiles = {"artikkeli1.txt", "artikkeli1.txt", "artikkeli1.txt", "artikkeli1.txt"}
 
-    else: # anna error viesti jos tiedostoa ei löydy
+while True:
+    usrFile = input("Tiedoston nimi (esim. nimi.tyyppi): ")
+    if usrFile in txtFiles:
+        with open(usrFile, 'r', encoding='utf-8') as file:
+            content = file.read()
+            wrds = content.split()
+            count = len(wrds)
+        # merkkien määrän tarkistus
+        length = len(content)
+        print(f"Tekstissä on {length} merkkejä\nTekstissä on {count} sanaa")
+
+    else: # anna error viesti jos tiedostoa ei löydy 
+          # ja pyydä yrittämään uuestaan
         print("! File not found.\nPlease try again.\n")
