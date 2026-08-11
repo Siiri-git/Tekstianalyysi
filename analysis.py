@@ -1,6 +1,6 @@
-# file = open("filename.txt", "r")
-# lines = file.readlines()
-txtFiles = {"artikkeli1.txt", "artikkeli1.txt", "artikkeli1.txt", "artikkeli1.txt"}
+import heapq
+from collections import Counter
+txtFiles = {"artikkeli1.txt", "artikkeli2.txt", "artikkeli3.txt", "artikkeli4.txt"}
 
 while True:
     usrFile = input("Tiedoston nimi (esim. nimi.tyyppi): ")
@@ -8,10 +8,17 @@ while True:
         with open(usrFile, 'r', encoding='utf-8') as file:
             content = file.read()
             wrds = content.split()
-            count = len(wrds)
+            wrdCount = len(wrds)
         # merkkien määrän tarkistus
-        length = len(content)
-        print(f"Tekstissä on {length} merkkejä\nTekstissä on {count} sanaa")
+        chars = len(content)
+        # yleisimmät sanat
+        cnt = Counter(wrds)
+        k = 5
+        top_k = heapq.nlargest(k, cnt.items(), key=lambda x: x[1])
+        topWrds = []
+        for item in top_k:
+            topWrds.append(item[0])
+        print(f"> Tekstissä on {chars} merkkiä\n> Tekstissä on {wrdCount} sanaa\n> Yleisimmät sanat ovat {', '.join(topWrds)}")
 
     else: # anna error viesti jos tiedostoa ei löydy 
           # ja pyydä yrittämään uuestaan
