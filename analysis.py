@@ -43,4 +43,4 @@ while True:
 
     else: # anna error viesti jos tiedostoa ei löydy
           # ja pyydä yrittämään uuestaan
-        print("! File not found.\nPlease try again.\n")
+        print("! Tiedostoa ei löydy.\nYritä uudelleen.\n")
