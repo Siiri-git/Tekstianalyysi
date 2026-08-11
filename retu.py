@@ -4,6 +4,7 @@ from collections import Counter
 with open("artikkeli1.txt", 'r', encoding='utf-8') as file:
     content = file.read()
     wrds = content.split()
+    wrdCount = len(wrds)
     
 
 cnt = Counter(wrds)

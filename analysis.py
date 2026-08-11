@@ -18,8 +18,21 @@ while True:
         topWrds = []
         for item in top_k:
             topWrds.append(item[0])
-        print(f"> Tekstissä on {chars} merkkiä\n> Tekstissä on {wrdCount} sanaa\n> Yleisimmät sanat ovat {', '.join(topWrds)}")
+        # yleisimmät kirjiamet
+        charFreq = {}
+        for char in content.replace(" ","").lower():
+            if char in charFreq:
+                charFreq[char] += 1
+            else:
+                charFreq[char] = 1
+        sortedCharFreq = dict(sorted(charFreq.items(), key=lambda item: item[1], reverse=True))
+        listSoCaFr = []
+        for char in sortedCharFreq:
+            listSoCaFr.append(char)
 
-    else: # anna error viesti jos tiedostoa ei löydy 
+        print(f"> Tekstissä on {chars} merkkiä\n> Tekstissä on {wrdCount} sanaa\n> Yleisimmät sanat ovat {', '.join(topWrds)}")
+        print(f"> Yleisimmät merkit ovat {listSoCaFr[0]}, {listSoCaFr[1]}, {listSoCaFr[2]}, {listSoCaFr[3]}, {listSoCaFr[4]}")
+
+    else: # anna error viesti jos tiedostoa ei löydy
           # ja pyydä yrittämään uuestaan
         print("! File not found.\nPlease try again.\n")
