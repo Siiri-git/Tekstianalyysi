@@ -1,22 +1,13 @@
 # file = open("filename.txt", "r")
 # lines = file.readlines()
-txtFiles = {"article1", "article2", "article3", "article4", "demofile"}
+txtFiles = {"article1.txt", "article2.txt", "article3.txt", "article4.txt", "demofile.txt"}
 
 while True:
-    print("Functions:\n1. Find a file\n2. Exit")
-    usrFunc = input("Choose a function: ")
+    usrFile = input("File name: ")
 
-    if usrFunc == "1":
-        usrFile = input("File name: ")
-        if usrFile in txtFiles:
-            print("yay")
-            file = open(usrFile, "r")
+    if usrFile in txtFiles:
+        file = open(usrFile, "r")
+        print(file.read())
 
-        else:
-            print("try again")
-
-    elif usrFunc == "2":
-        break
-
-    else:
-        print("Try again!")
+    else: # anna error viesti jos tiedostoa ei löydy
+        print("! File not found.\nPlease try again.\n")
